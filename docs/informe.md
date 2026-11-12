@@ -1,6 +1,6 @@
 # Agente de calidad del aire del Valle de Aburrá
 
-**SI3003 – Inteligencia Artificial, EAFIT 2026-1 · Proyecto final (idea 3.1)** · Grupo: _[completar]_
+**SI3003 – Inteligencia Artificial, EAFIT 2026-1 · Proyecto final (idea 3.1)** · Grupo: _[Jueves]_
 
 ## 1. Problema
 El Valle de Aburrá vive episodios de contaminación por PM2.5, sobre todo entre febrero y abril y,
