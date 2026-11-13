@@ -1,4 +1,4 @@
-# Preguntas fijas para evaluar el agente (CLAUDE.md §8).
+# Preguntas fijas para evaluar el agente.
 # herramienta_esperada: herramientas que DEBEN aparecer en la traza ([] = ninguna obligatoria).
 # requiere_cita: la respuesta debe tener >= 1 cita [fuente, p. N] y todas deben coincidir con fragmentos recuperados.
 # debe_contener: cada elemento es obligatorio; "a|b" = basta con una alternativa (sin distinguir mayúsculas ni tildes).

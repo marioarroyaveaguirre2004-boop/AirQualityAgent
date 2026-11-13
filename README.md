@@ -50,8 +50,9 @@ py -3.13 -m venv .venv            # Linux/Mac: python3.13 -m venv .venv
 pip install -r requirements.txt
 copy .env.example .env            # Linux/Mac: cp .env.example .env
 ```
-Edita `.env` y pon tu `GROQ_API_KEY`. Luego elige `LLM_MODEL` con `python -m src.agent.llm`, que
-lista los modelos del endpoint; usa uno con tool calling. Sin clave, todo funciona menos el chat.
+Edita `.env` y pon tu `GROQ_API_KEY` (se crea gratis en https://console.groq.com → API Keys).
+`LLM_MODEL` ya viene configurado con `openai/gpt-oss-120b`; `python -m src.agent.llm` lista otros
+modelos del endpoint. Sin clave, todo funciona menos el chat.
 
 En Windows, si la consola muestra errores de codificación (`UnicodeEncodeError`), ejecuta antes
 `set PYTHONUTF8=1` (cmd) o `$env:PYTHONUTF8=1` (PowerShell).
@@ -138,11 +139,5 @@ Todas consultadas o descargadas el **2026-11-06**.
 `docs/informe.pdf` (4 páginas) se genera desde `docs/informe.tex`: `cd docs` y luego `pdflatex informe.tex`
 (dos veces). La figura se toma de `results/figures/`. Hay una versión en Markdown en `docs/informe.md`.
 
-## Lista de verificación antes de entregar
-- [ ] `git clone` → `pip install -r requirements.txt` → `streamlit run app.py` funciona siguiendo solo este README.
-- [ ] `python -m pytest -q` en verde.
-- [ ] La app arranca sin `.env` (chat desactivado con aviso).
-- [ ] `eval/results.md` actualizado con `python eval/run_eval.py`.
-- [ ] Informe (`docs/informe.tex` → `docs/informe.pdf`, 4 páginas; versión Markdown en `docs/informe.md`) y `docs/declaracion_ia.md` completos, con nombre del grupo.
-- [ ] `git ls-files | grep -i env` muestra solo `.env.example`.
-- [ ] Correo con asunto `si3003-AI-grupo-nombre`, enviado por cada integrante, con el enlace al repositorio.
+## Uso de IA generativa
+Ver `docs/declaracion_ia.md`.
