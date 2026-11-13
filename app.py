@@ -79,8 +79,8 @@ def station_map(daily: pd.DataFrame, stations: pd.DataFrame, day: pd.Timestamp, 
                   labels={"pm25_txt": "PM2.5", "categoria": "Categoría ICA"}, zoom=10.2,
                   center={"lat": 6.25, "lon": -75.58}, height=460)
     # scatter_mapbox y no scatter_map: el plotly.js que trae Streamlit 1.40 no tiene el trazo
-    # "scattermap" y el mapa sale vacío. carto-positron no necesita token de Mapbox.
-    fig = px.scatter_mapbox(df, mapbox_style="carto-positron", **kwargs)
+    # "scattermap" y el mapa sale vacío. Fondo de OpenStreetMap: no necesita clave (Carto ahora sí).
+    fig = px.scatter_mapbox(df, mapbox_style="open-street-map", **kwargs)
     fig.update_layout(margin=dict(l=0, r=0, t=0, b=0), legend=dict(orientation="h", y=-0.02))
     return fig
 
