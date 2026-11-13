@@ -14,6 +14,7 @@ from __future__ import annotations
 import json
 import re
 
+import numpy as np
 from pypdf import PdfReader
 
 from src.config import CORPUS_DIR, EMBEDDING_MODEL, INDEX_DIR
@@ -72,7 +73,10 @@ def build_chunks() -> tuple[list[dict], list[dict]]:
 
 
 def build_dense_index(chunks: list[dict]) -> str:
-    """Construye el índice FAISS; devuelve el backend usado ('faiss' o 'bm25')."""
+    """Construye el índice denso (FAISS + embeddings.npy); devuelve 'faiss' o 'bm25'.
+
+    La app busca sobre embeddings.npy con NumPy (mismo resultado que el IndexFlatIP) para no
+    cargar FAISS junto a PyTorch en tiempo de consulta (segfault en macOS)."""
     try:
         import faiss
         from sentence_transformers import SentenceTransformer
@@ -83,10 +87,12 @@ def build_dense_index(chunks: list[dict]) -> str:
         index = faiss.IndexFlatIP(emb.shape[1])
         index.add(emb)
         faiss.write_index(index, str(INDEX_DIR / "index.faiss"))
+        np.save(INDEX_DIR / "embeddings.npy", emb)
         return "faiss"
     except Exception as e:  # noqa: BLE001 - sin modelo/red: queda BM25
         print(f"[aviso] índice denso no disponible ({e}); se usará BM25.")
         (INDEX_DIR / "index.faiss").unlink(missing_ok=True)
+        (INDEX_DIR / "embeddings.npy").unlink(missing_ok=True)
         return "bm25"
 
 

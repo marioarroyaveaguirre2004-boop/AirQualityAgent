@@ -54,6 +54,9 @@ Edita `.env` y pon tu `GROQ_API_KEY` (se crea gratis en https://console.groq.com
 `LLM_MODEL` ya viene configurado con `openai/gpt-oss-120b`; `python -m src.agent.llm` lista otros
 modelos del endpoint. Sin clave, todo funciona menos el chat.
 
+Si la primera pregunta del chat cierra la app, añade `RAG_BACKEND=bm25` al `.env`: el buscador
+usa BM25 (sin embeddings) y no carga PyTorch.
+
 En Windows, si la consola muestra errores de codificación (`UnicodeEncodeError`), ejecuta antes
 `set PYTHONUTF8=1` (cmd) o `$env:PYTHONUTF8=1` (PowerShell).
 
